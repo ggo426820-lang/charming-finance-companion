@@ -13,7 +13,7 @@ export function Topbar({ onMenu }: { onMenu: () => void }) {
 
   return (
     <header className="flex flex-col gap-4 border-b border-border px-4 py-4 md:px-8 md:py-5 xl:flex-row xl:items-center xl:justify-between">
-      <div className="flex items-center gap-3 xl:hidden">
+      <div className="flex min-w-0 items-center gap-3 xl:hidden">
         <button
           onClick={onMenu}
           aria-label="Open menu"
@@ -21,7 +21,7 @@ export function Topbar({ onMenu }: { onMenu: () => void }) {
         >
           <Menu className="h-4 w-4" />
         </button>
-        <span className="font-display text-base font-semibold lg:hidden">Vorix</span>
+        <span className="truncate font-display text-base font-semibold lg:hidden">Vorix</span>
       </div>
 
       <div className="grid flex-1 grid-cols-1 gap-3 sm:grid-cols-3 xl:max-w-4xl">
@@ -46,7 +46,7 @@ export function Topbar({ onMenu }: { onMenu: () => void }) {
         ))}
       </div>
 
-      <div className="flex items-center gap-2 self-end">
+      <div className="flex flex-wrap items-center justify-end gap-2 self-end">
         <button
           onClick={toggleTheme}
           className="grid h-10 w-10 place-items-center rounded-full text-primary-foreground transition-opacity hover:opacity-90"
@@ -68,7 +68,7 @@ export function Topbar({ onMenu }: { onMenu: () => void }) {
           <Bell className="h-4 w-4" />
           <span className="absolute right-2.5 top-2.5 h-1.5 w-1.5 rounded-full bg-primary-soft" />
         </button>
-        <div className="ml-1 flex items-center gap-2 rounded-full border border-border bg-surface py-1 pl-1 pr-3">
+        <div className="ml-1 flex shrink-0 items-center gap-2 rounded-full border border-border bg-surface py-1 pl-1 pr-3">
           <span
             className="grid h-8 w-8 place-items-center rounded-full text-xs font-semibold text-primary-foreground"
             style={{ backgroundImage: "var(--gradient-primary)" }}
