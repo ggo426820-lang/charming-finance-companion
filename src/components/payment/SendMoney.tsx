@@ -43,7 +43,7 @@ export function SendMoney() {
           <button
             key={r.handle}
             onClick={() => setActive(i)}
-            className={`flex min-w-[68px] flex-col items-center gap-1.5 rounded-xl border px-2 py-2 transition-colors ${
+            className={`flex min-w-[68px] shrink-0 flex-col items-center gap-1.5 rounded-xl border px-2 py-2 transition-colors ${
               i === active ? "border-primary/60 bg-primary/10" : "border-border bg-surface-2 hover:bg-muted"
             }`}
           >
