@@ -8,7 +8,7 @@ export function DashboardLayout({ title, children }: { title: string; children: 
   return (
     <div className="flex min-h-screen bg-background text-foreground">
       <Sidebar open={open} onClose={() => setOpen(false)} />
-      <main className="relative min-w-0 flex-1">
+      <main className="relative min-w-0 flex-1 overflow-x-clip">
         <div className="glow-surface pointer-events-none absolute -top-40 left-1/3 h-80 w-[640px] max-w-full opacity-40" />
         <div className="relative">
           <Topbar onMenu={() => setOpen(true)} />
