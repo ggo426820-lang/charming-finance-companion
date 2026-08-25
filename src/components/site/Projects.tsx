@@ -198,6 +198,51 @@ export function Projects() {
             </Reveal>
           ))}
         </div>
+
+        {pageCount > 1 && (
+          <nav
+            aria-label="Projects pagination"
+            className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--edge-line)] pt-6"
+          >
+            <p className="text-xs tracking-[0.14em] uppercase text-muted-foreground">
+              Page {current} / {pageCount}
+            </p>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => goTo(current - 1)}
+                disabled={current === 1}
+                className="hairline rounded-full px-4 py-2 text-xs tracking-[0.1em] uppercase text-muted-foreground transition-colors duration-300 hover:bg-secondary hover:text-foreground disabled:pointer-events-none disabled:opacity-40 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+              >
+                Prev
+              </button>
+              {Array.from({ length: pageCount }, (_, i) => i + 1).map((n) => (
+                <button
+                  key={n}
+                  type="button"
+                  aria-current={n === current ? "page" : undefined}
+                  onClick={() => goTo(n)}
+                  className={cn(
+                    "figure h-9 w-9 rounded-full text-xs transition-all duration-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
+                    n === current
+                      ? "bg-primary text-primary-foreground shadow-soft"
+                      : "hairline text-muted-foreground hover:bg-secondary hover:text-foreground",
+                  )}
+                >
+                  {String(n).padStart(2, "0")}
+                </button>
+              ))}
+              <button
+                type="button"
+                onClick={() => goTo(current + 1)}
+                disabled={current === pageCount}
+                className="hairline rounded-full px-4 py-2 text-xs tracking-[0.1em] uppercase text-muted-foreground transition-colors duration-300 hover:bg-secondary hover:text-foreground disabled:pointer-events-none disabled:opacity-40 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+              >
+                Next
+              </button>
+            </div>
+          </nav>
+        )}
       </div>
     </section>
   );
