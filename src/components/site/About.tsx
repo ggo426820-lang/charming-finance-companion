@@ -1,4 +1,4 @@
-import aboutDetail from "@/assets/about-detail.jpg";
+import portraitAsset from "@/assets/portrait-cutout.webp.asset.json";
 import { Reveal } from "./Reveal";
 import { SectionHeader } from "./SectionHeader";
 
@@ -49,14 +49,17 @@ export function About() {
               aria-hidden="true"
               className="pointer-events-none absolute -bottom-5 -left-5 h-full w-full rounded-4xl border border-accent/35"
             />
-            <img
-              src={aboutDetail}
-              alt="Curved warm plaster architectural detail"
-              loading="lazy"
-              width={896}
-              height={1152}
-              className="relative h-[30rem] w-full rounded-4xl object-cover shadow-estate lg:h-[36rem]"
-            />
+            <div className="relative h-[26rem] w-full overflow-hidden rounded-4xl bg-gradient-to-b from-card to-background shadow-estate sm:h-[30rem] lg:h-[36rem]">
+              <img
+                src={portraitAsset.url}
+                alt="Portrait photograph"
+                loading="lazy"
+                decoding="async"
+                width={848}
+                height={768}
+                className="h-full w-full object-cover object-top"
+              />
+            </div>
             <div className="edge-card absolute bottom-6 right-6 max-w-[13rem] rounded-2xl bg-card/95 p-5 backdrop-blur">
               <p className="figure text-2xl">4+ yrs</p>
               <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
