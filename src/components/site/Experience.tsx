@@ -48,7 +48,7 @@ export function Experience() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="experience" className="relative px-4 py-24">
+    <section id="experience" className="relative px-4 py-14 sm:py-20">
       <span
         aria-hidden="true"
         className="grid-paper pointer-events-none absolute inset-x-0 top-0 h-72 opacity-60"
@@ -67,7 +67,7 @@ export function Experience() {
           }
         />
 
-        <div className="spine relative mt-16 pl-6 sm:pl-10">
+        <div className="spine relative mt-10 sm:mt-12 pl-6 sm:pl-10">
           <div className="space-y-6">
             {roles.map((r, i) => {
               const isOpen = openIndex === i;

@@ -49,7 +49,7 @@ export function Expertise() {
   return (
     <section
       id="expertise"
-      className="relative overflow-hidden bg-primary px-4 pt-32 pb-32 text-primary-foreground sm:pt-40 sm:pb-40"
+      className="relative overflow-hidden bg-primary px-4 pt-24 pb-20 text-primary-foreground sm:pt-32 sm:pb-28"
     >
       <WaveDivider position="top" className="text-background" />
       <span
@@ -75,7 +75,7 @@ export function Expertise() {
           }
         />
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
+        <div className="mt-10 grid sm:mt-12 gap-6 md:grid-cols-2">
           {pillars.map((p, i) => (
             <Reveal key={p.title} delay={i * 80}>
               <div className="lift group relative h-full overflow-hidden rounded-4xl border border-primary-foreground/12 bg-primary-foreground/[0.04] p-8 transition-colors duration-500 hover:border-accent/40 hover:bg-primary-foreground/[0.07] sm:p-9">

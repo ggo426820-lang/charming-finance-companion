@@ -34,7 +34,7 @@ const principles = [
 
 export function About() {
   return (
-    <section id="about" className="px-4 py-24">
+    <section id="about" className="px-4 py-14 sm:py-20">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           index="04"
@@ -43,7 +43,7 @@ export function About() {
           lede="Real estate software fails in the details: stale listings, brokers who can't see each other's data, dashboards that lag behind the site."
         />
 
-        <div className="mt-16 grid items-start gap-14 lg:grid-cols-[0.85fr_1fr]">
+        <div className="mt-10 grid sm:mt-12 items-start gap-14 lg:grid-cols-[0.85fr_1fr]">
           <Reveal variant="reveal-img" className="relative">
             <span
               aria-hidden="true"

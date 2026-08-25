@@ -89,7 +89,7 @@ export function Projects() {
     active === "All" ? projects : projects.filter((p) => p.category === active);
 
   return (
-    <section id="portfolio" className="px-4 py-20">
+    <section id="portfolio" className="px-4 py-14 sm:py-20">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           index="01"
@@ -127,7 +127,7 @@ export function Projects() {
           }
         />
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-2">
+        <div className="mt-10 grid sm:mt-12 gap-8 lg:grid-cols-2">
           {visible.map((p, i) => (
             <Reveal key={p.title} delay={i * 90}>
               <article className="lift group h-full overflow-hidden rounded-4xl bg-card edge-card">

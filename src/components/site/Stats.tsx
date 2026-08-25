@@ -46,7 +46,7 @@ const marquee = [
 
 export function Stats() {
   return (
-    <section aria-label="Impact in numbers" className="relative px-4 pt-16 pb-6">
+    <section aria-label="Impact in numbers" className="relative px-4 pt-10 pb-4 sm:pt-14">
       <div className="mx-auto max-w-6xl">
         <Reveal className="grid overflow-hidden rounded-4xl bg-card edge-card sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s, i) => (
@@ -81,7 +81,7 @@ export function Stats() {
         </Reveal>
       </div>
 
-      <div className="mt-16 edge-t py-6">
+      <div className="mt-10 edge-t sm:mt-12 py-6">
         <div className="mask-fade-x overflow-hidden">
           <div className="marquee-track flex w-max gap-12 pr-12">
             {[...marquee, ...marquee].map((item, i) => (
