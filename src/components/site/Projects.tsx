@@ -83,10 +83,23 @@ const filters = [
   "Buyer Experience",
 ] as const;
 
+const PAGE_SIZE = 4;
+
 export function Projects() {
   const [active, setActive] = useState<(typeof filters)[number]>("All");
-  const visible =
+  const [page, setPage] = useState(1);
+  const filtered =
     active === "All" ? projects : projects.filter((p) => p.category === active);
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const current = Math.min(page, pageCount);
+  const visible = filtered.slice((current - 1) * PAGE_SIZE, current * PAGE_SIZE);
+
+  const goTo = (next: number) => {
+    setPage(Math.min(Math.max(next, 1), pageCount));
+    document
+      .getElementById("portfolio")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <section id="portfolio" className="px-4 py-14 sm:py-20">
@@ -112,7 +125,10 @@ export function Projects() {
                   key={f}
                   type="button"
                   aria-pressed={active === f}
-                  onClick={() => setActive(f)}
+                  onClick={() => {
+                    setActive(f);
+                    setPage(1);
+                  }}
                   className={cn(
                     "rounded-full px-4 py-2 text-xs tracking-[0.1em] uppercase transition-all duration-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
                     active === f
@@ -182,6 +198,51 @@ export function Projects() {
             </Reveal>
           ))}
         </div>
+
+        {pageCount > 1 && (
+          <nav
+            aria-label="Projects pagination"
+            className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--edge-line)] pt-6"
+          >
+            <p className="text-xs tracking-[0.14em] uppercase text-muted-foreground">
+              Page {current} / {pageCount}
+            </p>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => goTo(current - 1)}
+                disabled={current === 1}
+                className="hairline rounded-full px-4 py-2 text-xs tracking-[0.1em] uppercase text-muted-foreground transition-colors duration-300 hover:bg-secondary hover:text-foreground disabled:pointer-events-none disabled:opacity-40 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+              >
+                Prev
+              </button>
+              {Array.from({ length: pageCount }, (_, i) => i + 1).map((n) => (
+                <button
+                  key={n}
+                  type="button"
+                  aria-current={n === current ? "page" : undefined}
+                  onClick={() => goTo(n)}
+                  className={cn(
+                    "figure h-9 w-9 rounded-full text-xs transition-all duration-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
+                    n === current
+                      ? "bg-primary text-primary-foreground shadow-soft"
+                      : "hairline text-muted-foreground hover:bg-secondary hover:text-foreground",
+                  )}
+                >
+                  {String(n).padStart(2, "0")}
+                </button>
+              ))}
+              <button
+                type="button"
+                onClick={() => goTo(current + 1)}
+                disabled={current === pageCount}
+                className="hairline rounded-full px-4 py-2 text-xs tracking-[0.1em] uppercase text-muted-foreground transition-colors duration-300 hover:bg-secondary hover:text-foreground disabled:pointer-events-none disabled:opacity-40 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+              >
+                Next
+              </button>
+            </div>
+          </nav>
+        )}
       </div>
     </section>
   );
