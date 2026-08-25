@@ -83,10 +83,23 @@ const filters = [
   "Buyer Experience",
 ] as const;
 
+const PAGE_SIZE = 4;
+
 export function Projects() {
   const [active, setActive] = useState<(typeof filters)[number]>("All");
-  const visible =
+  const [page, setPage] = useState(1);
+  const filtered =
     active === "All" ? projects : projects.filter((p) => p.category === active);
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const current = Math.min(page, pageCount);
+  const visible = filtered.slice((current - 1) * PAGE_SIZE, current * PAGE_SIZE);
+
+  const goTo = (next: number) => {
+    setPage(Math.min(Math.max(next, 1), pageCount));
+    document
+      .getElementById("portfolio")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <section id="portfolio" className="px-4 py-14 sm:py-20">
