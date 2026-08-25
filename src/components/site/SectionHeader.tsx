@@ -24,11 +24,11 @@ export function SectionHeader({
   return (
     <Reveal
       className={cn(
-        "grid gap-8 border-t pt-8 md:grid-cols-[auto_1fr_auto] md:items-start md:gap-12",
-        dark ? "border-primary-foreground/20" : "border-border",
+        "grid gap-6 md:grid-cols-[auto_1fr_auto] md:items-start md:gap-12",
         className,
       )}
     >
+
       <div className="flex items-center gap-4 md:block">
         <span
           className={cn(

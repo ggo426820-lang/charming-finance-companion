@@ -15,7 +15,7 @@ const engagements = [
 
 export function Contact() {
   return (
-    <section id="contact" className="px-4 pb-24">
+    <section id="contact" className="px-4 pb-14 sm:pb-20">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <div className="relative overflow-hidden rounded-4xl bg-primary px-8 py-16 text-primary-foreground sm:px-16">
@@ -78,7 +78,7 @@ export function Contact() {
               </ul>
             </div>
 
-            <dl className="relative mt-14 grid gap-8 border-t border-primary-foreground/15 pt-10 sm:grid-cols-2 lg:grid-cols-4">
+            <dl className="relative mt-10 grid sm:mt-12 gap-8 border-t border-primary-foreground/15 pt-10 sm:grid-cols-2 lg:grid-cols-4">
               {channels.map((c) => (
                 <div key={c.label}>
                   <dt className="eyebrow !text-primary-foreground/55">{c.label}</dt>
@@ -111,7 +111,7 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className="edge-t px-4 py-14">
+    <footer className="edge-t px-4 py-10 sm:py-12">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_auto] md:items-start">
           <div>
