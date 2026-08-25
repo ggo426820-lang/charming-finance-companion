@@ -1,4 +1,4 @@
-import aboutDetail from "@/assets/about-detail.jpg";
+import portraitAsset from "@/assets/portrait-cutout.webp.asset.json";
 import { Reveal } from "./Reveal";
 import { SectionHeader } from "./SectionHeader";
 
