@@ -125,7 +125,10 @@ export function Projects() {
                   key={f}
                   type="button"
                   aria-pressed={active === f}
-                  onClick={() => setActive(f)}
+                  onClick={() => {
+                    setActive(f);
+                    setPage(1);
+                  }}
                   className={cn(
                     "rounded-full px-4 py-2 text-xs tracking-[0.1em] uppercase transition-all duration-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
                     active === f
