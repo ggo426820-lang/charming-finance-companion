@@ -1,20 +1,16 @@
+import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SmartImage } from "@/components/SmartImage";
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { useEffect } from "react";
 
 function CartPage() {
   const { items, updateQuantity, removeFromCart, subtotal, totalItems } = useCart();
   const { t } = useLanguage();
   const shipping = 10;
   const total = subtotal + shipping;
-
-  useEffect(() => {
-    document.title = "Shopping Cart — Lumina Beauty";
-  }, []);
 
   const handleIncrease = (id: string, currentQty: number) => {
     updateQuantity(id, currentQty + 1);
@@ -153,4 +149,19 @@ function CartPage() {
   );
 }
 
-export default CartPage;
+const title = 'Your Cart — Lumina Beauty';
+const description = 'Review the natural skincare products in your Lumina Beauty cart and checkout securely.';
+
+export const Route = createFileRoute("/cart")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: CartPage,
+});

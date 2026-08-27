@@ -1,9 +1,9 @@
+import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useCart } from "@/context/CartContext";
-import { useEffect } from "react";
 
 function ConfirmationPage() {
   const { t } = useLanguage();
@@ -11,10 +11,6 @@ function ConfirmationPage() {
   const orderNumber = `LB-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
   const shipping = 10;
   const total = subtotal + shipping;
-
-  useEffect(() => {
-    document.title = "Order Confirmed — Lumina Beauty";
-  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -128,4 +124,19 @@ function ConfirmationPage() {
   );
 }
 
-export default ConfirmationPage;
+const title = 'Order Confirmed — Lumina Beauty';
+const description = 'Thank you for your Lumina Beauty order. Your natural skincare ritual is on its way.';
+
+export const Route = createFileRoute("/confirmation")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: ConfirmationPage,
+});
