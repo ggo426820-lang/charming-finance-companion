@@ -1,16 +1,37 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Nav } from "@/components/site/Nav";
-import { Hero } from "@/components/site/Hero";
-import { Stats } from "@/components/site/Stats";
-import { Projects } from "@/components/site/Projects";
-import { Expertise } from "@/components/site/Expertise";
-import { Experience } from "@/components/site/Experience";
-import { About } from "@/components/site/About";
-import { Contact, Footer } from "@/components/site/Contact";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { Hero } from "@/components/home/Hero";
+import { Story } from "@/components/home/Story";
+import { Products } from "@/components/home/Products";
+import { Differences } from "@/components/home/Differences";
+import { BeforeAfter } from "@/components/home/BeforeAfter";
+import { Testimonial } from "@/components/home/Testimonial";
+import { Categories } from "@/components/home/Categories";
+import { Newsletter } from "@/components/home/Newsletter";
 
-const title = "Mostafa Samir — Full Stack Engineer for Real Estate Platforms";
-const description =
-  "Senior full stack engineer building property listing portals, multi-tenant brokerage systems and real-time property dashboards with .NET 8, Angular and Next.js.";
+function HomePage() {
+
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <Header />
+      <main>
+        <Hero />
+        <Story />
+        <Products />
+        <Differences />
+        <BeforeAfter />
+        <Testimonial />
+        <Categories />
+        <Newsletter />
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+const title = 'Lumina Beauty — Luxury Natural Skincare & Clean Beauty';
+const description = 'Cruelty-free, dermatologist-tested botanical formulas for radiant skin in 14 days. Shop luxury natural skincare from Lumina Beauty.';
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -23,21 +44,5 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: Index,
+  component: HomePage,
 });
-
-function Index() {
-  return (
-    <main id="top">
-      <Nav />
-      <Hero />
-      <Stats />
-      <Projects />
-      <Expertise />
-      <Experience />
-      <About />
-      <Contact />
-      <Footer />
-    </main>
-  );
-}
