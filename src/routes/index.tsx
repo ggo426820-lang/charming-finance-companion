@@ -1,43 +1,36 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Nav } from "@/components/site/Nav";
-import { Hero } from "@/components/site/Hero";
-import { Stats } from "@/components/site/Stats";
-import { Projects } from "@/components/site/Projects";
-import { Expertise } from "@/components/site/Expertise";
-import { Experience } from "@/components/site/Experience";
-import { About } from "@/components/site/About";
-import { Contact, Footer } from "@/components/site/Contact";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { Hero } from "@/components/home/Hero";
+import { Story } from "@/components/home/Story";
+import { Products } from "@/components/home/Products";
+import { Differences } from "@/components/home/Differences";
+import { BeforeAfter } from "@/components/home/BeforeAfter";
+import { Testimonial } from "@/components/home/Testimonial";
+import { Categories } from "@/components/home/Categories";
+import { Newsletter } from "@/components/home/Newsletter";
+import { useEffect } from "react";
 
-const title = "Mostafa Samir — Full Stack Engineer for Real Estate Platforms";
-const description =
-  "Senior full stack engineer building property listing portals, multi-tenant brokerage systems and real-time property dashboards with .NET 8, Angular and Next.js.";
+function HomePage() {
+  useEffect(() => {
+    document.title = "Lumina Beauty — Luxury Natural Skincare & Clean Beauty";
+  }, []);
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: Index,
-});
-
-function Index() {
   return (
-    <main id="top">
-      <Nav />
-      <Hero />
-      <Stats />
-      <Projects />
-      <Expertise />
-      <Experience />
-      <About />
-      <Contact />
+    <div className="min-h-screen bg-background text-foreground">
+      <Header />
+      <main>
+        <Hero />
+        <Story />
+        <Products />
+        <Differences />
+        <BeforeAfter />
+        <Testimonial />
+        <Categories />
+        <Newsletter />
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 }
+
+export default HomePage;
