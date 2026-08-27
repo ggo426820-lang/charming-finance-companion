@@ -53,9 +53,9 @@ export function BeforeAfter() {
           }}
           onTouchStart={(e) => {
             setDragging(true);
-            updateFromX(e.touches[0].clientX);
+            updateFromX(e.touches[0]!.clientX);
           }}
-          onTouchMove={(e) => updateFromX(e.touches[0].clientX)}
+          onTouchMove={(e) => updateFromX(e.touches[0]!.clientX)}
           onTouchEnd={() => setDragging(false)}
         >
           <img

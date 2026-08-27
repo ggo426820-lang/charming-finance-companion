@@ -55,7 +55,7 @@ export function Story() {
           <div className="mt-10 md:mt-12 grid grid-cols-3 gap-4 sm:gap-6 border-t border-border pt-8 md:pt-10">
             <div>
               <div className="font-display text-2xl sm:text-3xl md:text-4xl font-light text-rose-gold">
-                {STORY_DATA.stats[0][0]}
+                {STORY_DATA.stats[0]![0]}
               </div>
               <div className="mt-2 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                 {t.story.stats.years}
@@ -63,7 +63,7 @@ export function Story() {
             </div>
             <div>
               <div className="font-display text-2xl sm:text-3xl md:text-4xl font-light text-rose-gold">
-                {STORY_DATA.stats[1][0]}
+                {STORY_DATA.stats[1]![0]}
               </div>
               <div className="mt-2 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                 {t.story.stats.satisfaction}
@@ -71,7 +71,7 @@ export function Story() {
             </div>
             <div>
               <div className="font-display text-2xl sm:text-3xl md:text-4xl font-light text-rose-gold">
-                {STORY_DATA.stats[2][0]}
+                {STORY_DATA.stats[2]![0]}
               </div>
               <div className="mt-2 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                 {t.story.stats.natural}
