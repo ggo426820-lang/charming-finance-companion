@@ -11,14 +11,14 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(() => {
-    // Get from localStorage or default to 'en'
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("language");
-      return (saved === "ar" || saved === "en" ? saved : "en") as Language;
-    }
-    return "en";
-  });
+  const [language, setLanguageState] = useState<Language>("en");
+
+  // Read the stored preference after hydration to avoid SSR mismatches.
+  useEffect(() => {
+    const saved = localStorage.getItem("language");
+    if (saved === "ar" || saved === "en") setLanguageState(saved);
+  }, []);
+
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
